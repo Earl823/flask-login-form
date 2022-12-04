@@ -1,12 +1,11 @@
-import sqlite3
-
-conn = sqlite3.connect('user.sqlite')
-cursor = conn.cursor()
-
-sql = """ CREATE TABLE USER (
-	id integer PRIMARY KEY,
-	email CHAR(20) NOT NULL,
-	password CHAR(20) NOT NULL
-)"""
-
-cursor.execute(sql)
+from flask import Flask
+from flask_mysqldb import MySQL
+ 
+app = Flask(__name__)
+ 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'login_form'
+ 
+mysql = MySQL(app)
